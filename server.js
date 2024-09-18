@@ -18,6 +18,13 @@ app.use(express.json());
 
 app.use(cors());
 
+app.use(
+  cors({
+    origin: ["*"], // Replace with your frontend URL
+    credentials: true, // Allow sending cookies with the request
+  })
+);
+
 if(process.env.Node_ENV=='development'){
   app.use(morgan('dev'));
   console.log(`mode:${process.env.Node_ENV}`)
