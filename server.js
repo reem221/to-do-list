@@ -3,6 +3,7 @@ const port = 3000;
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan=require('morgan');
+const cors = require('cors');
 
 dotenv.config({ path: 'config.env'});
 
@@ -14,6 +15,8 @@ dbConnection();
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 if(process.env.Node_ENV=='development'){
   app.use(morgan('dev'));
